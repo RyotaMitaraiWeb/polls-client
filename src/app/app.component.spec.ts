@@ -7,13 +7,14 @@ import { IStore } from './interfaces';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AuthService } from './core/auth/auth.service';
 import { initialState } from './store/test-state';
+import { FooterComponent } from './core/footer/footer.component';
 
 
 describe('AppComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [
-                RouterTestingModule, HeaderComponent, HttpClientTestingModule
+                RouterTestingModule, HeaderComponent, HttpClientTestingModule, FooterComponent
             ],
             declarations: [
                 AppComponent

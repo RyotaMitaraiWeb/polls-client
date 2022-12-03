@@ -1,12 +1,13 @@
 @use '@angular/material' as mat;
 @use './themes.scss' as theme;
 
-html,
-body {
-    height: 100%;
+* {
+    box-sizing: border-box;
 }
+
 body {
     margin: 0;
+    padding: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
@@ -15,8 +16,6 @@ body {
 $blue: mat.define-palette(mat.$indigo-palette, 500);
 $accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
-$purple: mat.define-palette(mat.$purple-palette, 500);
-
 $theme: mat.define-light-theme((
     color: (
         primary: $blue,
@@ -24,20 +23,7 @@ $theme: mat.define-light-theme((
     )
 ));
 
-$dark-theme: mat.define-light-theme((
-    color: (
-        primary: $purple,
-        accent: $accent,
-    )
-));
-
 .blue {
     @include mat.all-component-themes($theme);
     @include theme.theme($theme);
-    // @include angular-material-theme($theme);
-}
-
-.purple {
-    @include mat.all-component-themes($dark-theme);
-    @include theme.theme($dark-theme)
 }
