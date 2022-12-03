@@ -1,0 +1,20 @@
+<nav id="nav" *ngIf="user?.id;else guest" class="primary" [@openClose]="isOpen ? 'open' : 'closed'">
+    <ul class="links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">All Polls</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Create Poll</a></li>
+        <li><a href="#">Logout</a></li>
+    </ul>
+</nav>
+
+<ng-template #guest>
+    <nav id="nav" class="primary" [@openClose]="isOpen ? 'open' : 'closed'">
+        <ul class="links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">All Polls</a></li>
+            <li><a href="#">Register</a></li>
+            <li><a href="#">Login</a></li>
+        </ul>
+    </nav>
+</ng-template>

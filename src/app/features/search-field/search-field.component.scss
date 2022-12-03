@@ -1,0 +1,15 @@
+#search-field {
+    & > div {
+        border-radius: 0;
+    }
+
+    mat-icon {
+        color: black;
+    }
+
+    .mat-mdc-form-field-bottom-align {
+        display: none;
+    }
+
+    height: 100%;
+}

@@ -1,0 +1,22 @@
+#header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    app-menu-button {
+        display: none;
+        @media screen and (max-width: 900px) {
+            display: block;
+        }
+    }
+
+    app-navigation {
+        @media screen and (max-width: 900px) {
+            display: none;
+
+            &.mobile-menu-visible {
+                display: block;
+            }
+        }
+    }
+}
