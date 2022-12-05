@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IRequestError, IUser, IUserAuth, IUserResponse } from '../../interfaces';
+import { IRequestError, IUserAuth, IUserResponse } from '../../interfaces';
 
 @Injectable({
     providedIn: 'root'
