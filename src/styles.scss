@@ -11,6 +11,15 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+h1 {
+    text-align: center;
+}
+
+.prewrap {
+    white-space: pre-wrap;
+    text-align: left;
+}
+
 @include mat.core();
 
 $blue: mat.define-palette(mat.$indigo-palette, 500);

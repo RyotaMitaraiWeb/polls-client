@@ -1,20 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { provideMockStore } from '@ngrx/store/testing';
-import { MenuButtonComponent } from 'src/app/features/menu-button/menu-button.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { IStore } from 'src/app/interfaces';
 import { initialState } from 'src/app/store/test-state';
+import { setUser } from 'src/app/store/user/user.actions';
 
 import { NavigationComponent } from './navigation.component';
 
 describe('NavigationComponent', () => {
     let component: NavigationComponent;
     let fixture: ComponentFixture<NavigationComponent>;
+    let store: MockStore;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [NavigationComponent, BrowserAnimationsModule],
+            imports: [NavigationComponent, BrowserAnimationsModule, RouterTestingModule],
             providers: [provideMockStore<IStore>(initialState)]
         })
             .compileComponents();
@@ -22,6 +24,7 @@ describe('NavigationComponent', () => {
         fixture = TestBed.createComponent(NavigationComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
+        store = TestBed.inject(MockStore);
     });
 
     it('should create', () => {

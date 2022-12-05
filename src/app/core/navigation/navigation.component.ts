@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { IStore, IUser } from '../../../app/interfaces';
 import { Store } from '@ngrx/store';
 import { state, trigger, style, transition, animate } from '@angular/animations';
+import { RouterModule } from '@angular/router';
+
 
 @Component({
     selector: 'app-navigation',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, RouterModule],
     templateUrl: './navigation.component.html',
     styleUrls: ['./navigation.component.scss'],
     animations: [

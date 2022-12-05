@@ -1,11 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { SearchFieldComponent } from 'src/app/features/search-field/search-field.component';
 import { IStore } from 'src/app/interfaces';
 import { initialState } from 'src/app/store/test-state';
-import { NavigationComponent } from '../navigation/navigation.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { HeaderComponent } from './header.component';
 
@@ -16,7 +14,7 @@ describe('HeaderComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [HeaderComponent, BrowserAnimationsModule],
+            imports: [HeaderComponent, BrowserAnimationsModule, RouterTestingModule],
             providers: [provideMockStore<IStore>(initialState)]
         })
             .compileComponents();

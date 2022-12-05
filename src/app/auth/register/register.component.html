@@ -1,0 +1,29 @@
+<h1>Register</h1>
+<form [formGroup]="profile" method="POST" (ngSubmit)="onSubmit()" id="register">
+    <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input type="text" formControlName="username" name="username" matInput required id="username">
+        <mat-hint>Username must be between 5 and 15 characters.</mat-hint>
+        <mat-error *ngIf="profile.controls.username?.errors?.['required']">Username is required</mat-error>
+        <mat-error *ngIf="profile.controls.username?.errors?.['minlength']">Username must be at least five characters
+        </mat-error>
+        <mat-error *ngIf="profile.controls.username?.errors?.['maxlength']">Username must be no more than 15 characters
+        </mat-error>
+        <mat-error *ngIf="profile.controls.username?.errors?.['usernameExists']">User already exists</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input [type]="hidePassword ? 'password' : 'text'" formControlName="password" required name="password" matInput
+            id="password">
+        <mat-hint>Password must be at least 6 characters</mat-hint>
+        <mat-error *ngIf="profile.controls.password?.errors?.['required']">Password is required</mat-error>
+        <mat-error *ngIf="profile.controls.password?.errors?.['minlength']">Password must be at least six characters
+        </mat-error>
+        <button mat-icon-button matSuffix matTooltip="Hide password" id="password-visibility"
+            (click)="togglePasswordVisibility($event)" matTooltipPosition="above">
+            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+    <button id="auth-submit" type="submit" [disabled]="!profile.valid" mat-raised-button
+        color="primary">Register</button>
+</form>
