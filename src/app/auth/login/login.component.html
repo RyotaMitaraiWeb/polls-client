@@ -1,0 +1,19 @@
+<h1>Login</h1>
+<form method="POST" [formGroup]="profile" (ngSubmit)="onSubmit()" id="login">
+    <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input type="text" formControlName="username" name="username" matInput required id="username">
+        <mat-error>Username is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input [type]="hidePassword ? 'password' : 'text'" formControlName="password" required name="password" matInput
+            id="password">
+        <mat-error>Password is required</mat-error>
+        <button mat-icon-button matSuffix matTooltip="Hide password" id="password-visibility"
+            (click)="togglePasswordVisibility($event)" matTooltipPosition="above">
+            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+    <button id="auth-submit" type="submit" [disabled]="!profile.valid" mat-raised-button color="primary">Login</button>
+</form>

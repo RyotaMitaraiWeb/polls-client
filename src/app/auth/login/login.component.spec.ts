@@ -9,16 +9,16 @@ import { SnackbarService } from 'src/app/features/snackbar/snackbar.service';
 import { IStore } from 'src/app/interfaces';
 import { initialState } from 'src/app/store/test-state';
 
-import { RegisterComponent } from './register.component';
+import { LoginComponent } from './login.component';
 
 describe('RegisterComponent', () => {
-    let component: RegisterComponent;
-    let fixture: ComponentFixture<RegisterComponent>;
+    let component: LoginComponent;
+    let fixture: ComponentFixture<LoginComponent>;
     let store: MockStore;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [RegisterComponent, HttpClientTestingModule, BrowserAnimationsModule],
+            imports: [LoginComponent, HttpClientTestingModule, BrowserAnimationsModule],
             providers: [
                 provideMockStore<IStore>(initialState),
                 AuthService,
@@ -28,9 +28,8 @@ describe('RegisterComponent', () => {
         })
             .compileComponents();
 
-        fixture = TestBed.createComponent(RegisterComponent);
+        fixture = TestBed.createComponent(LoginComponent);
         component = fixture.componentInstance;
-        component.profile.controls['username'].clearAsyncValidators();
         store = TestBed.inject(MockStore);
         fixture.detectChanges();
     });
@@ -88,7 +87,7 @@ describe('RegisterComponent', () => {
         const submitElement = fixture.debugElement.query(By.css('#auth-submit'));
         const submit = submitElement.nativeElement as HTMLButtonElement;
 
-        field.value = '1';
+        field.value = '';
         field.dispatchEvent(new Event('input'));
         fixture.whenStable().then(() => {
             fixture.detectChanges();

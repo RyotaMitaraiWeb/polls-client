@@ -53,7 +53,6 @@ export class RegisterComponent implements OnDestroy {
             .subscribe({
                 next: (res) => {
                     res = res as IUserResponse;
-                    console.log(res);
                     localStorage.setItem('token', res.accessToken);
                     this.store.dispatch(setUser({
                         id: res.id,
