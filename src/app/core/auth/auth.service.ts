@@ -50,4 +50,12 @@ export class AuthService {
             }
         );
     }
+
+    logout() {
+        return this.httpClient.delete<{ statusCode: number}>(this.url + '/logout', {
+            headers: {
+                'Authorization': localStorage.getItem('token') as string || '',
+            },
+        })
+    }
 }

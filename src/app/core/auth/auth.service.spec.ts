@@ -151,6 +151,36 @@ describe('AuthService', () => {
             expect(req.request.method).toBe('POST');
             req.flush(dummyResponse);
         });
+    });
+
+    describe('logout', () => {
+        it('successful logout', () => {
+            const dummyResponse = {
+                statusCode: 201,
+            }
+
+            service.logout().subscribe((res) => {
+                expect(res.statusCode).toBe(201);
+                
+            });
+
+            const req = httpMock.expectOne(`${service.url}/logout`);
+            expect(req.request.method).toBe('DELETE');
+            req.flush(dummyResponse);
+        });
+
+        it('unsuccessful logout', () => {
+            const dummyResponse: { statusCode: number } = {
+                statusCode: 403,
+            }
+            service.logout().subscribe((res) => {
+                expect(res.statusCode).toBe(403);
+            });
+
+            const req = httpMock.expectOne(`${service.url}/logout`);
+            expect(req.request.method).toBe('DELETE');
+            req.flush(dummyResponse);
+        });
     })
 
     afterEach(() => {
