@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, map, Observable } from 'rxjs';
 import { IRequestError, IUserAuth, IUserResponse } from '../../interfaces';
 
 @Injectable({
@@ -47,6 +48,6 @@ export class AuthService {
                     'Authorization': localStorage.getItem('token') as string || '',
                 },
             }
-        )
+        );
     }
 }
