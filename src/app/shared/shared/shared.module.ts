@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatListModule } from '@angular/material/list';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
         MatIconModule,
         MatTooltipModule,
         MatButtonModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatListModule,
     ],
     exports: [
         MatFormFieldModule,
@@ -25,6 +27,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
         MatIconModule,
         MatTooltipModule,
         MatButtonModule,
+        MatListModule,
     ]
 })
 export class SharedModule { }

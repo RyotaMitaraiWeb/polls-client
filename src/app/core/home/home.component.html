@@ -1,0 +1,38 @@
+<section *ngIf="!(user$ | async);else logged" id="home">
+    <h1>Welcome!</h1>
+    <p>To access all features, you must log in or register!</p>
+    <h2>Quick actions</h2>
+    <mat-nav-list>
+        <a mat-fab extended routerLink="/login">
+            <mat-icon>forward</mat-icon>
+            Log in
+        </a>
+        <a mat-fab extended routerLink="/register">
+            <mat-icon>open_in_new</mat-icon>
+            Register
+        </a>
+        <a mat-fab extended routerLink="/poll/all">
+            <mat-icon>explore</mat-icon>
+            Explore all polls
+        </a>
+    </mat-nav-list>
+</section>
+
+<ng-template #logged>
+    <section id="home">
+        <h1>Welcome, {{user$ | async}}!</h1>
+        <h2>Quick actions</h2>
+        <a mat-fab extended routerLink="/poll/create">
+            <mat-icon>add</mat-icon>
+            Create a poll
+        </a>
+        <a mat-fab extended routerLink="/profile">
+            <mat-icon>person_pin</mat-icon>
+            Explore your polls
+        </a>
+        <a mat-fab extended routerLink="/poll/all">
+            <mat-icon>explore</mat-icon>
+            Explore all polls
+        </a>
+    </section>
+</ng-template>
