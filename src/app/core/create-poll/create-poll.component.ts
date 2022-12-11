@@ -6,7 +6,7 @@ import { ValidationService } from '../validation/validation.service';
 import { PollService } from '../poll/poll.service';
 import { Router } from '@angular/router';
 import { IPollSubmission, IRequestError } from 'src/app/interfaces';
-import { Subject, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { SnackbarService } from 'src/app/features/snackbar/snackbar.service';
 
 @Component({

@@ -38,7 +38,7 @@ export interface IPoll {
     id: number;
     title: string;
     description: string;
-    previousTitles: string[];
+    previousTitles: IPreviousTitle[];
     creationDate: Date;
     updateDate: Date | null;
     author: string;
@@ -57,4 +57,10 @@ export interface IPollSubmission {
 export interface IPollSuccessfulAction {
     id: number;
     statusCode: number;
+}
+
+export interface IPreviousTitle {
+    id: number;
+    title: string;
+    date: Date;
 }

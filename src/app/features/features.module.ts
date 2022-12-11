@@ -11,7 +11,7 @@ import { MenuButtonComponent } from './menu-button/menu-button.component';
         CommonModule, 
         SearchFieldComponent, 
         MenuButtonComponent,
-        SharedModule
+        SharedModule,
     ],
     exports: [SearchFieldComponent]
 })

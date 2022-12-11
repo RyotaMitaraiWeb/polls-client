@@ -1,0 +1,23 @@
+<section id="poll">
+    <form action="POST" [formGroup]="form" (ngSubmit)="OnSubmit()">
+        <h1>{{poll.title}}</h1>
+        <p class="description" *ngIf="poll.description !== ''">{{poll.description}}</p>
+
+        <h2>Previous titles</h2>
+        <article *ngFor="let pt of poll.previousTitles">
+            <h3><b>{{pt.title}}</b> - {{pt.date | date: 'short'}}</h3>
+        </article>
+
+        <h2>Total votes: {{totalCount}}</h2>
+        <mat-radio-group formControlName="choice" required="required">
+            <div class="choice" *ngFor="let vote of voteCounts">
+                <app-choice [content]="vote.content" [voteId]="vote.id" [voteCount]="vote.count"
+                    [total]="totalCount" [userVote]="poll.voteId"></app-choice>
+            </div>
+        </mat-radio-group>
+        <button mat-fab extended type="submit" color="primary" *ngIf="!poll?.hasVoted" [disabled]="form.invalid">
+            <mat-icon>how_to_vote</mat-icon>
+            Submit your vote
+        </button>
+    </form>
+</section>

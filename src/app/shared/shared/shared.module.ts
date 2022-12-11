@@ -7,6 +7,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatListModule } from '@angular/material/list';
+import { MatRadioModule } from '@angular/material/radio';
+import { ChoiceComponent } from '../choice/choice.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatTreeModule } from '@angular/material/tree';
 
 
 @NgModule({
@@ -20,6 +24,10 @@ import { MatListModule } from '@angular/material/list';
         MatButtonModule,
         MatSnackBarModule,
         MatListModule,
+        MatRadioModule,
+        ChoiceComponent,
+        MatProgressBarModule,
+        MatTreeModule,
     ],
     exports: [
         MatFormFieldModule,
@@ -28,6 +36,10 @@ import { MatListModule } from '@angular/material/list';
         MatTooltipModule,
         MatButtonModule,
         MatListModule,
+        MatRadioModule,
+        ChoiceComponent,
+        MatProgressBarModule,
+        MatTreeModule,
     ]
 })
 export class SharedModule { }
