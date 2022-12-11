@@ -11,6 +11,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { ChoiceComponent } from '../choice/choice.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTreeModule } from '@angular/material/tree';
+import { DeleteButtonComponent } from '../delete-button/delete-button.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { MatTreeModule } from '@angular/material/tree';
         ChoiceComponent,
         MatProgressBarModule,
         MatTreeModule,
+        DeleteButtonComponent,
     ],
     exports: [
         MatFormFieldModule,
@@ -40,6 +42,7 @@ import { MatTreeModule } from '@angular/material/tree';
         ChoiceComponent,
         MatProgressBarModule,
         MatTreeModule,
+        DeleteButtonComponent,
     ]
 })
 export class SharedModule { }

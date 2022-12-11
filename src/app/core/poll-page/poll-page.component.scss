@@ -16,5 +16,11 @@
         h2, h3 {
             text-align: center;
         }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2em;
+        }
     }
 }

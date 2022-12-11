@@ -1,12 +1,17 @@
 <section id="poll">
     <form action="POST" [formGroup]="form" (ngSubmit)="OnSubmit()">
         <h1>{{poll.title}}</h1>
+        <div class="actions" *ngIf="poll.isAuthor">
+            <app-delete-button [pollId]="poll.id"></app-delete-button>
+        </div>
         <p class="description" *ngIf="poll.description !== ''">{{poll.description}}</p>
 
-        <h2>Previous titles</h2>
-        <article *ngFor="let pt of poll.previousTitles">
-            <h3><b>{{pt.title}}</b> - {{pt.date | date: 'short'}}</h3>
-        </article>
+        <div *ngIf="poll.previousTitles.length > 0" class="actions">
+            <h2>Previous titles</h2>
+            <article *ngFor="let pt of poll.previousTitles">
+                <h3><b>{{pt.title}}</b> - {{pt.date | date: 'short'}}</h3>
+            </article>
+        </div>
 
         <h2>Total votes: {{totalCount}}</h2>
         <mat-radio-group formControlName="choice" required="required">
