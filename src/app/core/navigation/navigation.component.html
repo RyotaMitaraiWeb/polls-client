@@ -1,8 +1,8 @@
 <nav id="nav" *ngIf="user?.id;else guest" class="primary" [@openClose]="isOpen ? 'open' : 'closed'">
     <ul class="links">
         <li><a routerLink="/">Home</a></li>
-        <li><a routerLink="/all">All Polls</a></li>
-        <li><a href="#">Profile</a></li>
+        <li><a routerLink="/poll/all">All Polls</a></li>
+        <li><a routerLink="/profile">Profile</a></li>
         <li><a routerLink="/poll/create">Create Poll</a></li>
         <li><a routerLink="/logout">Logout</a></li>
     </ul>
@@ -12,7 +12,7 @@
     <nav id="nav" class="primary" [@openClose]="isOpen ? 'open' : 'closed'">
         <ul class="links">
             <li><a routerLink="/">Home</a></li>
-            <li><a routerLink="/all">All Polls</a></li>
+            <li><a routerLink="/poll/all">All Polls</a></li>
             <li><a routerLink="/register">Register</a></li>
             <li><a routerLink="/login">Login</a></li>
         </ul>

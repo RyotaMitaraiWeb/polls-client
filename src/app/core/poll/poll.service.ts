@@ -58,4 +58,12 @@ export class PollService {
             }
         });
     }
+
+    getOwnPolls() {
+        return this.http.get<IPollPreview[]>(`${this.url}/own`, {
+            headers: {
+                'Authorization': localStorage.getItem('token') as string || '',
+            }
+        });
+    }
 }

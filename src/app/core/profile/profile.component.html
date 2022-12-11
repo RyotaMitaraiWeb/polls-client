@@ -1,0 +1,11 @@
+<section id="profile">
+    <h1>{{username | async}}'s profile</h1>
+    <article class="preview" *ngFor="let poll of polls">
+        <app-poll-preview [title]="poll.title" [description]="poll.description"
+            [pollId]="poll.id" [personal]="true"></app-poll-preview>
+    </article>
+
+    <article *ngIf="polls.length === 0">
+        <h2>You currently do not have polls!</h2>
+    </article>
+</section>
