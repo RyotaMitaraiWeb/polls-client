@@ -13,6 +13,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTreeModule } from '@angular/material/tree';
 import { DeleteButtonComponent } from '../delete-button/delete-button.component';
 import { EditButtonComponent } from '../edit-button/edit-button.component';
+import { PollPreviewComponent } from '../poll-preview/poll-preview.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { EditButtonComponent } from '../edit-button/edit-button.component';
         MatTreeModule,
         DeleteButtonComponent,
         EditButtonComponent,
+        PollPreviewComponent,
     ],
     exports: [
         MatFormFieldModule,
@@ -46,6 +48,7 @@ import { EditButtonComponent } from '../edit-button/edit-button.component';
         MatTreeModule,
         DeleteButtonComponent,
         EditButtonComponent,
+        PollPreviewComponent,
     ]
 })
 export class SharedModule { }

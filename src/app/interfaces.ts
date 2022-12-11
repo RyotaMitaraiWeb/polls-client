@@ -64,3 +64,10 @@ export interface IPreviousTitle {
     title: string;
     date: Date;
 }
+
+export interface IPollPreview {
+    id: number;
+    title: string;
+    description: string;
+    previousTitles: IPreviousTitle[];
+}

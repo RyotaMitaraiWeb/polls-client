@@ -1,0 +1,14 @@
+<mat-card>
+    <mat-card-header class="card-header">
+        <mat-card-title class="title">{{title}}</mat-card-title>
+        <mat-card-subtitle class="description" *ngIf="description !== ''">{{description}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions align="end" class="actions">
+        <a [routerLink]="['/poll', pollId]" mat-fab extended color="primary">
+            <mat-icon>exit_to_app</mat-icon>
+            Go to poll
+        </a>
+        <app-edit-button *ngIf="personal" mat-fab extended [pollId]="pollId"></app-edit-button>
+        <app-delete-button *ngIf="personal" [pollId]="pollId" mat-fab extended></app-delete-button>
+    </mat-card-actions>
+</mat-card>

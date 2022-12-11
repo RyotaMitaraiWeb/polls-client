@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IPoll, IPollSubmission, IPollSuccessfulAction } from 'src/app/interfaces';
+import { IPoll, IPollPreview, IPollSubmission, IPollSuccessfulAction } from 'src/app/interfaces';
 
 @Injectable({
     providedIn: 'root'
@@ -45,6 +45,14 @@ export class PollService {
 
     vote(pollId: number, choiceId: number) {
         return this.http.post<{voteId: number}>(`${this.url}/${pollId}/vote/${choiceId}`, {}, {
+            headers: {
+                'Authorization': localStorage.getItem('token') as string || '',
+            }
+        });
+    }
+
+    getAllPolls() {
+        return this.http.get<IPollPreview[]>(`${this.url}/all`, {
             headers: {
                 'Authorization': localStorage.getItem('token') as string || '',
             }

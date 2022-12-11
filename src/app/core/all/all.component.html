@@ -1,0 +1,7 @@
+<section id="all">
+    <h1>All polls</h1>
+    <article *ngFor="let poll of polls" class="preview">
+        <app-poll-preview [title]="poll.title" [description]="poll.description"
+        [pollId]="poll.id" [personal]="false"></app-poll-preview>
+    </article>
+</section>

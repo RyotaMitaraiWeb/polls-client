@@ -22,6 +22,5 @@ export class EditButtonComponent {
     ) { }
 
     @Input() pollId: number = 0;
-
 }
 
