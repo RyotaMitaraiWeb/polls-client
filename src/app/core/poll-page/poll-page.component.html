@@ -2,6 +2,7 @@
     <form action="POST" [formGroup]="form" (ngSubmit)="OnSubmit()">
         <h1>{{poll.title}}</h1>
         <div class="actions" *ngIf="poll.isAuthor">
+            <app-edit-button [pollId]="poll.id"></app-edit-button>
             <app-delete-button [pollId]="poll.id"></app-delete-button>
         </div>
         <p class="description" *ngIf="poll.description !== ''">{{poll.description}}</p>
