@@ -1,27 +1,37 @@
-# Client
+# Polls Client
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.1.
+Client-side for polls application, written in Angular
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To run this application, you must first run its [server](https://github.com/RyotaMitaraiWeb/polls-server).
 
-## Code scaffolding
+After getting the server running successfully, enter the following in your terminal
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```npm
+npm install
+```
 
-## Build
+## Structure
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### auth
+The auth module contains components related to authentication.
 
-## Running unit tests
+### core
+The core folder/module contains services, components, and other functionalities that are needed for this application to be usable in any normal manner. The core module has a mechanism to ensure that it is imported only once (otherwise, your application won't run)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### shared
+The shared module contains components and other functionalities that you know can (and will) be imported more than once across your application. This is also where you should import Angular Material components that you intend to use throughout the application (such as ``mat-icon``)
 
-## Running end-to-end tests
+### features
+The features module contains functionalities with minor impact to the application, such as the search field, burger menu, and etc.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### store
+This is where all the ngrx logic is stored. In addition, ``test-state.ts`` contains an object which you can provide to the mock store when writing tests.
 
-## Further help
+### interfaces.ts
+This file contains all custom interfaces.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
