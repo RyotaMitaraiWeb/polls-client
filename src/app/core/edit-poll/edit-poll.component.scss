@@ -1,0 +1,5 @@
+@import '../../../variables.scss';
+
+#edit-form {
+    @include form();
+}

@@ -4,9 +4,11 @@ import { LoginComponent } from './auth/login/login.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { CreatePollComponent } from './core/create-poll/create-poll.component';
+import { EditPollComponent } from './core/edit-poll/edit-poll.component';
 import { HomeComponent } from './core/home/home.component';
 import { PollPageComponent } from './core/poll-page/poll-page.component';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { AuthorGuard } from './shared/guards/author.guard';
 import { NoAuthGuard } from './shared/guards/no-auth.guard';
 import { PollResolver } from './shared/resolvers/poll-resolver.resolver';
 
@@ -18,12 +20,15 @@ const routes: Routes = [
     {
         path: 'poll', children: [
             {
+                path: 'create', component: CreatePollComponent, canActivate: [AuthGuard], pathMatch: 'full',
+            },
+            {
                 path: ':id', component: PollPageComponent, pathMatch: 'full',
                 resolve: { data: PollResolver}
             },
             {
-                path: 'create', component: CreatePollComponent, canActivate: [AuthGuard], pathMatch: 'full',
-            },
+                path: ':id/edit', component: EditPollComponent, canActivate: [AuthGuard, AuthorGuard], pathMatch: 'full', resolve: { data: PollResolver }
+            }
         ]
     }
 ];
