@@ -1,0 +1,42 @@
+<h1>Create a poll</h1>
+<form action="POST" [formGroup]="form" id="create-poll" (ngSubmit)="OnSubmit()">
+    <h2>Title &amp; description</h2>
+    <mat-form-field class="field">
+        <mat-label>Title</mat-label>
+        <input matInput type="text" id="title" formControlName="title" required>
+        <mat-hint>Title should be between 5 and 100 characters</mat-hint>
+        <mat-error *ngIf="form.controls.title?.errors?.['required']">Title is required</mat-error>
+        <mat-error *ngIf="form.controls.title?.errors?.['minlength']">Title must be at least five characters</mat-error>
+        <mat-error *ngIf="form.controls.title?.errors?.['maxlength']">Title must be no more than 100 characters</mat-error>
+    </mat-form-field>
+    <mat-form-field class="field">
+        <mat-label>Description</mat-label>
+        <textarea matInput id="description" formControlName="description" rows="10"></textarea>
+        <mat-hint>Description should not be more than 500 characters. Description is optional</mat-hint>
+        <mat-error *ngIf="form.controls.description?.errors?.['maxlength']">Description must not be more than 500 characters</mat-error>
+    </mat-form-field>
+    <h2>Choices</h2>
+    <div class="choice-field" formArrayName="choices" *ngFor="let choice of choices.controls; let i = index">
+        <mat-form-field class="choice" [formGroupName]="i">
+            <mat-label>Choice #{{i + 1}}</mat-label>
+            <textarea matInput required type="text" formControlName="content" [id]="'content' + i" placeholder="Insert content here"></textarea>
+            <mat-hint>Choice content must be between 1 and 50 characters</mat-hint>
+            <mat-error>Choice content must be between 1 and 50 characters</mat-error>
+        </mat-form-field>
+        <button class="remove-button" mat-fab extended color="warn" type="button" (click)="removeField(i)">
+            <mat-icon>close</mat-icon>
+            Remove
+        </button>
+    </div>
+
+    <button id="add-button" mat-fab extended color="accent" (click)="addField($event)">
+        <mat-icon>add</mat-icon>
+        Add choice
+    </button>
+    <button type="submit" [disabled]="form.invalid" mat-fab extended color="primary" id="create-button">
+        <mat-icon>add</mat-icon>
+        Create poll
+    </button>
+    <p class="error" [ngClass]="{'invisible': !form.controls.choices.errors?.['duplicates']}">Your submission has duplicate choices, please change or remove them!</p>
+    <p class="error" [ngClass]="{'invisible': !form.controls.choices.errors?.['fewerThanTwoChoices']}">You must have at least two choices!</p>
+</form>
