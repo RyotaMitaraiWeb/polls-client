@@ -42,4 +42,12 @@ export class PollService {
             }
         });
     }
+
+    vote(pollId: number, choiceId: number) {
+        return this.http.post<{voteId: number}>(`${this.url}/${pollId}/vote/${choiceId}`, {}, {
+            headers: {
+                'Authorization': localStorage.getItem('token') as string || '',
+            }
+        });
+    }
 }
