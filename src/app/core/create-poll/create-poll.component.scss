@@ -1,3 +1,7 @@
+.note {
+    text-align: center;
+}
+
 #create-poll {
     display: flex;
     justify-content: center;
@@ -47,7 +51,8 @@
                 }
             }
 
-            mat-form-field.choice, .remove-button {
+            mat-form-field.choice,
+            .remove-button {
                 margin-left: auto;
                 margin-right: auto;
             }
