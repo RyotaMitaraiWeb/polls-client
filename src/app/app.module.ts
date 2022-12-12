@@ -13,7 +13,6 @@ import { FeaturesModule } from './features/features.module';
 @NgModule({
     declarations: [
         AppComponent,
-    
     ],
     imports: [
         BrowserModule,
@@ -30,7 +29,6 @@ import { FeaturesModule } from './features/features.module';
         HttpClientModule,
     ],
     providers: [HttpClientModule],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule { }

@@ -1,8 +1,8 @@
 <mat-card>
-    <mat-card-header class="card-header">
+    <div class="card-header">
         <mat-card-title class="title">{{title}}</mat-card-title>
-        <mat-card-subtitle class="description" *ngIf="description !== ''">{{description}}</mat-card-subtitle>
-    </mat-card-header>
+        <mat-card-subtitle class="description" *ngIf="description !== ''">{{description | shorten}}</mat-card-subtitle>
+    </div>
     <mat-card-actions align="end" class="actions">
         <a [routerLink]="['/poll', pollId]" mat-fab extended color="primary">
             <mat-icon>exit_to_app</mat-icon>

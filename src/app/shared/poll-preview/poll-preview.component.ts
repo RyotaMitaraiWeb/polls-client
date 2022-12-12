@@ -6,12 +6,22 @@ import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { EditButtonComponent } from '../edit-button/edit-button.component';
 import { DeleteButtonComponent } from '../delete-button/delete-button.component';
+import { ShortenPipe } from '../shorten/shorten.pipe';
 
 
 @Component({
     selector: 'app-poll-preview',
     standalone: true,
-    imports: [CommonModule, MatCardModule, RouterModule, MatButtonModule, MatIconModule,EditButtonComponent, DeleteButtonComponent],
+    imports: [
+        CommonModule,
+        MatCardModule,
+        RouterModule,
+        MatButtonModule,
+        MatIconModule,
+        EditButtonComponent,
+        DeleteButtonComponent,
+        ShortenPipe,
+    ],
     templateUrl: './poll-preview.component.html',
     styleUrls: ['./poll-preview.component.scss'],
 })

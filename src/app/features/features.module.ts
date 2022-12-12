@@ -13,6 +13,6 @@ import { MenuButtonComponent } from './menu-button/menu-button.component';
         MenuButtonComponent,
         SharedModule,
     ],
-    exports: [SearchFieldComponent]
+    exports: [SearchFieldComponent],
 })
 export class FeaturesModule { }

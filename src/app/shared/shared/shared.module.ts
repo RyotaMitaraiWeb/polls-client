@@ -14,7 +14,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { DeleteButtonComponent } from '../delete-button/delete-button.component';
 import { EditButtonComponent } from '../edit-button/edit-button.component';
 import { PollPreviewComponent } from '../poll-preview/poll-preview.component';
-
+import { ShortenPipe } from '../shorten/shorten.pipe';
 
 @NgModule({
     declarations: [],
@@ -34,6 +34,7 @@ import { PollPreviewComponent } from '../poll-preview/poll-preview.component';
         DeleteButtonComponent,
         EditButtonComponent,
         PollPreviewComponent,
+        ShortenPipe,
     ],
     exports: [
         MatFormFieldModule,
@@ -49,6 +50,7 @@ import { PollPreviewComponent } from '../poll-preview/poll-preview.component';
         DeleteButtonComponent,
         EditButtonComponent,
         PollPreviewComponent,
+        ShortenPipe,
     ]
 })
 export class SharedModule { }
