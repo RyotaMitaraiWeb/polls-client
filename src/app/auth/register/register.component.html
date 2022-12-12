@@ -19,7 +19,7 @@
         <mat-error *ngIf="profile.controls.password?.errors?.['required']">Password is required</mat-error>
         <mat-error *ngIf="profile.controls.password?.errors?.['minlength']">Password must be at least six characters
         </mat-error>
-        <button mat-icon-button matSuffix matTooltip="Hide password" id="password-visibility"
+        <button mat-icon-button matSuffix [matTooltip]="(hidePassword ? 'Show' : 'Hide') + ' password'" id="password-visibility"
             (click)="togglePasswordVisibility($event)" matTooltipPosition="above">
             <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
