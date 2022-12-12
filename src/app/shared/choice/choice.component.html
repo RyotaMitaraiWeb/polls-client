@@ -1,5 +1,5 @@
 <mat-radio-button class="radio-button" [value]="voteId" name="choice" [checked]="voteId === userVote">
     {{content}}
 </mat-radio-button>
-<mat-progress-bar class="progress-bar" [value]="voteCount / total * 100"></mat-progress-bar>
-<p class="vote-count">{{voteCount}} votes (<i>{{voteCount / total | percent}}</i>) <span *ngIf="voteId === userVote">- you voted this</span></p>
+<mat-progress-bar *ngIf="userVote !== -1" class="progress-bar" [value]="voteCount / total * 100"></mat-progress-bar>
+<p *ngIf="userVote !== -1" class="vote-count">{{voteCount}} votes (<i>{{voteCount / total | percent}}</i>) <span *ngIf="voteId === userVote">- you voted this</span></p>
