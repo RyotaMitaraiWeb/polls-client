@@ -64,6 +64,7 @@ export class PollPageComponent implements OnInit, OnDestroy {
                 this.pollStatus = this.pollService.getPoll(this.pollId).subscribe({
                     next: (poll) => {
                         this.poll = poll;
+                        this.form.disable();
                     },
                     error: (res) => {
                         const error = res.error as IRequestError;
