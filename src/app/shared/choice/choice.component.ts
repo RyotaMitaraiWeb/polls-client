@@ -12,7 +12,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 })
 export class ChoiceComponent {
     @Input() content = '';
-    @Input() voteId = 0;
+    @Input() choiceId = 0;
     @Input() total = 0;
     @Input() voteCount = 0;
     @Input() userVote = 0;

@@ -17,7 +17,7 @@
         <h2>Total votes: {{totalCount}}</h2>
         <mat-radio-group formControlName="choice" required="required">
             <div class="choice" *ngFor="let vote of voteCounts">
-                <app-choice [content]="vote.content" [voteId]="vote.id" [voteCount]="vote.count"
+                <app-choice [content]="vote.content" [choiceId]="vote.id" [voteCount]="vote.count"
                     [total]="totalCount" [userVote]="poll.voteId"></app-choice>
             </div>
         </mat-radio-group>
