@@ -7,7 +7,7 @@
         </div>
         <p class="description" *ngIf="poll.description !== ''">{{poll.description}}</p>
 
-        <div *ngIf="poll.previousTitles.length > 0" class="actions">
+        <div *ngIf="poll.previousTitles.length > 0" class="previous-titles">
             <h2>Previous titles</h2>
             <article *ngFor="let pt of poll.previousTitles">
                 <h3><b>{{pt.title}}</b> - {{pt.date | date: 'short'}}</h3>
