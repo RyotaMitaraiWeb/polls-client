@@ -18,7 +18,6 @@ import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angu
 export class PollPageComponent implements OnInit, OnDestroy {
     constructor(
         private readonly pollService: PollService,
-        private readonly router: Router,
         private readonly route: ActivatedRoute,
         private readonly snackbar: SnackbarService,
         private readonly fb: FormBuilder,
@@ -51,16 +50,26 @@ export class PollPageComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.voteStatus.unsubscribe();
+        this.pollStatus.unsubscribe();
     }
 
     voteStatus = new Subscription();
+    pollStatus = new Subscription();
 
     OnSubmit() {
         const choiceId: number = Number(this.form.value.choice);
         this.voteStatus = this.pollService.vote(this.pollId, choiceId).subscribe({
             next: () => {
                 this.snackbar.openSnackbar('You voted successfully!', 'close', 10)
-                this.router.navigate(['/']);
+                this.pollStatus = this.pollService.getPoll(this.pollId).subscribe({
+                    next: (poll) => {
+                        this.poll = poll;
+                    },
+                    error: (res) => {
+                        const error = res.error as IRequestError;
+                        this.snackbar.openSnackbar(error.message, 'close', 10);
+                    }
+                })
             },
             error: (res) => {
                 const error = res.error as IRequestError;
