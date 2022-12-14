@@ -1,0 +1,6 @@
+<section id="search-results">
+    <article class="result" *ngFor="let poll of polls">
+        <app-poll-preview [title]="poll.title" [description]="poll.description" 
+        [pollId]="poll.id"></app-poll-preview>
+    </article>
+</section>

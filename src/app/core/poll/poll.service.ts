@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IPoll, IPollPreview, IPollSubmission, IPollSuccessfulAction } from 'src/app/interfaces';
 
@@ -61,6 +61,17 @@ export class PollService {
 
     getOwnPolls() {
         return this.http.get<IPollPreview[]>(`${this.url}/own`, {
+            headers: {
+                'Authorization': localStorage.getItem('token') as string || '',
+            }
+        });
+    }
+
+    searchPollsByTitle(title: string) {
+        let params = new HttpParams();
+        params = params.append('search', title);
+        return this.http.get<IPollPreview[]>(`${this.url}`, {
+            params,
             headers: {
                 'Authorization': localStorage.getItem('token') as string || '',
             }

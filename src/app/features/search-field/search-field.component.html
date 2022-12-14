@@ -1,5 +1,8 @@
 <mat-form-field id="search-field">
     <mat-label>Search by title</mat-label>
-    <input type="text" name="search" matInput>
-    <mat-icon matSuffix>search</mat-icon>
+    <input type="text" name="search" matInput [(ngModel)]="title">
+    <!-- <mat-icon matSuffix>search</mat-icon> -->
+    <button mat-icon-button matSuffix matTooltip="Search" (click)="search(title)">
+        <mat-icon>search</mat-icon>
+    </button>
 </mat-form-field>
