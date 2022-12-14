@@ -1,6 +1,7 @@
 <section id="poll">
     <form action="POST" [formGroup]="form" (ngSubmit)="OnSubmit()">
         <h1>{{poll.title}}</h1>
+        <p class="dates"><b>Created at:</b> {{poll.creationDate | date: 'short'}}. <span *ngIf="poll.updateDate"><b>Last updated:</b> {{poll.updateDate | date: 'short'}}</span></p>
         <div class="actions" *ngIf="poll.isAuthor">
             <app-edit-button [pollId]="poll.id"></app-edit-button>
             <app-delete-button [pollId]="poll.id"></app-delete-button>
