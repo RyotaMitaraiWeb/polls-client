@@ -32,7 +32,7 @@ export class RegisterComponent implements OnDestroy {
         username: ['', [
             Validators.required,
             Validators.minLength(5),
-            Validators.maxLength(15),
+            Validators.maxLength(10),
         ],
             [this.validator.checkIfUserExists()]
         ],
