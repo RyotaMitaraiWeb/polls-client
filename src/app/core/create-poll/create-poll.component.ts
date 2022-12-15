@@ -1,13 +1,15 @@
-import { Component, OnDestroy } from '@angular/core';
+import { AfterContentInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ValidationService } from '../validation/validation.service';
 import { PollService } from '../poll/poll.service';
 import { Router } from '@angular/router';
-import { IPollSubmission, IRequestError } from 'src/app/interfaces';
-import { Subscription } from 'rxjs';
+import { IPollSubmission, IRequestError, IStore } from 'src/app/interfaces';
+import { map, Subscription, tap } from 'rxjs';
 import { SnackbarService } from 'src/app/features/snackbar/snackbar.service';
+import { Store } from '@ngrx/store';
+import { close } from 'src/app/store/mobile-menu/mobile-menu.actions';
 
 @Component({
     selector: 'app-create-poll',
@@ -23,7 +25,10 @@ export class CreatePollComponent implements OnDestroy {
         private readonly pollService: PollService,
         private readonly router: Router,
         private readonly snackbar: SnackbarService,
-    ) { }
+        private readonly store: Store<IStore>,
+    ) {
+        store.dispatch(close());
+    }
 
     form = this.fb.group({
         title: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],

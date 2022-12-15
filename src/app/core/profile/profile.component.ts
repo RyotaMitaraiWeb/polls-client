@@ -5,6 +5,7 @@ import { IPollPreview, IStore, IUser } from 'src/app/interfaces';
 import { ActivatedRoute } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { map, Observable } from 'rxjs';
+import { close } from 'src/app/store/mobile-menu/mobile-menu.actions';
 
 @Component({
   selector: 'app-profile',
@@ -18,7 +19,8 @@ export class ProfileComponent implements OnInit {
         private readonly store: Store<IStore>,
         private readonly route: ActivatedRoute,    
     ) {
-        this.username = store.select('user').pipe(map(res => res.username))
+        this.username = store.select('user').pipe(map(res => res.username));
+        store.dispatch(close());
     }
 
     username!: Observable<string>;

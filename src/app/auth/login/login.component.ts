@@ -9,6 +9,7 @@ import { Store } from '@ngrx/store';
 import { IRequestError, IStore, IUserAuth, IUserResponse } from 'src/app/interfaces';
 import { setUser } from 'src/app/store/user/user.actions';
 import { Router } from '@angular/router';
+import { close } from 'src/app/store/mobile-menu/mobile-menu.actions';
 
 @Component({
     selector: 'app-login',
@@ -24,7 +25,9 @@ export class LoginComponent implements OnDestroy {
         private readonly snackbar: SnackbarService,
         private readonly store: Store<IStore>,
         private readonly router: Router,
-    ) { }
+    ) { 
+        store.dispatch(close());
+    }
 
     hidePassword: boolean = true;
     profile = this.fb.group({

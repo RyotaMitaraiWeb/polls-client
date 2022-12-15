@@ -10,6 +10,7 @@ import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { setUser } from 'src/app/store/user/user.actions';
 import { SnackbarService } from 'src/app/features/snackbar/snackbar.service';
+import { close } from 'src/app/store/mobile-menu/mobile-menu.actions';
 
 @Component({
     selector: 'app-register',
@@ -26,7 +27,9 @@ export class RegisterComponent implements OnDestroy {
         private readonly store: Store<IStore>,
         private readonly router: Router,
         private readonly snackbar: SnackbarService
-    ) { }
+    ) {
+        store.dispatch(close());
+    }
 
     profile = this.fb.group({
         username: ['', [

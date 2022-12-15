@@ -5,6 +5,7 @@ import { IStore } from 'src/app/interfaces';
 import { Observable, map } from 'rxjs';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { close } from 'src/app/store/mobile-menu/mobile-menu.actions';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,7 @@ import { RouterModule } from '@angular/router';
 export class HomeComponent {
     constructor(private readonly store: Store<IStore>) {
         this.user$ = store.select('user').pipe(map(user => user.username));
+        store.dispatch(close());
     }
 
     user$?: Observable<string>;
