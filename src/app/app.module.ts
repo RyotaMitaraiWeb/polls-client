@@ -6,9 +6,10 @@ import { StoreModule } from '@ngrx/store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { mobileMenuReducer } from './store/mobile-menu/mobile-menu.reducers';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { userReducer } from './store/user/user.reducers';
 import { FeaturesModule } from './features/features.module';
+import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 
 @NgModule({
     declarations: [
@@ -28,7 +29,11 @@ import { FeaturesModule } from './features/features.module';
         FeaturesModule,
         HttpClientModule,
     ],
-    providers: [HttpClientModule],
+    providers: [HttpClientModule,
+        {
+            provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true,
+        }
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule { }

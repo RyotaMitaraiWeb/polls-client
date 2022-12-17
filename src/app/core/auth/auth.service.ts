@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable } from 'rxjs';
 import { IRequestError, IUserAuth, IUserResponse } from '../../interfaces';
 
 @Injectable({
@@ -16,46 +15,18 @@ export class AuthService {
     }
 
     login(user: IUserAuth) {
-        return this.httpClient.post<IUserResponse | IRequestError>(this.url + '/login',
-            user,
-            {
-                headers: {
-                    'Authorization': localStorage.getItem('token') as string || '',
-                },
-                responseType: 'json',
-
-            }
-        )
+        return this.httpClient.post<IUserResponse | IRequestError>(this.url + '/login', user);
     }
 
     register(user: IUserAuth) {
-        return this.httpClient.post<IUserResponse | IRequestError>(this.url + '/register',
-            user,
-            {
-                headers: {
-                    'Authorization': localStorage.getItem('token') as string || '',
-                },
-                responseType: 'json',
-
-            }
-        )
+        return this.httpClient.post<IUserResponse | IRequestError>(this.url + '/register', user);
     }
 
     isLoggedIn() {
-        return this.httpClient.post<IUserResponse>(this.url + '/isLogged', {},
-            {
-                headers: {
-                    'Authorization': localStorage.getItem('token') as string || '',
-                },
-            }
-        );
+        return this.httpClient.post<IUserResponse>(this.url + '/isLogged', {});
     }
 
     logout() {
-        return this.httpClient.delete<{ statusCode: number}>(this.url + '/logout', {
-            headers: {
-                'Authorization': localStorage.getItem('token') as string || '',
-            },
-        })
+        return this.httpClient.delete<{ statusCode: number}>(this.url + '/logout')
     }
 }

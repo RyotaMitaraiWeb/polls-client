@@ -12,69 +12,36 @@ export class PollService {
     url: string = 'http://localhost:3000/poll';
 
     getPoll(id: number) {
-        return this.http.get<IPoll>(this.url + '/' + id, {
-            headers: {
-                'Authorization': localStorage.getItem('token') as string || '',
-            }
-        });
+        return this.http.get<IPoll>(this.url + '/' + id);
     }
 
     createPoll(poll: IPollSubmission) {
-        return this.http.post<IPollSuccessfulAction>(this.url + '/create', poll, {
-            headers: {
-                'Authorization': localStorage.getItem('token') as string || '',
-            }
-        });
+        return this.http.post<IPollSuccessfulAction>(this.url + '/create', poll);
     }
 
     editPoll(id: number, title: string) {
-        return this.http.patch<IPollSuccessfulAction>(`${this.url}/${id}/edit`, { title }, {
-            headers: {
-                'Authorization': localStorage.getItem('token') as string || '',
-            }
-        });
+        return this.http.patch<IPollSuccessfulAction>(`${this.url}/${id}/edit`, { title });
     }
 
     deletePoll(id: number) {
-        return this.http.delete<{}>(`${this.url}/${id}/delete`, {
-            headers: {
-                'Authorization': localStorage.getItem('token') as string || '',
-            }
-        });
+        return this.http.delete<{}>(`${this.url}/${id}/delete`);
     }
 
     vote(pollId: number, choiceId: number) {
-        return this.http.post<{voteId: number}>(`${this.url}/${pollId}/vote/${choiceId}`, {}, {
-            headers: {
-                'Authorization': localStorage.getItem('token') as string || '',
-            }
-        });
+        return this.http.post<{ voteId: number }>(`${this.url}/${pollId}/vote/${choiceId}`, {});
     }
 
     getAllPolls() {
-        return this.http.get<IPollPreview[]>(`${this.url}/all`, {
-            headers: {
-                'Authorization': localStorage.getItem('token') as string || '',
-            }
-        });
+        return this.http.get<IPollPreview[]>(`${this.url}/all`);
     }
 
     getOwnPolls() {
-        return this.http.get<IPollPreview[]>(`${this.url}/own`, {
-            headers: {
-                'Authorization': localStorage.getItem('token') as string || '',
-            }
-        });
+        return this.http.get<IPollPreview[]>(`${this.url}/own`);
     }
 
     searchPollsByTitle(title: string) {
         let params = new HttpParams();
         params = params.append('search', title);
-        return this.http.get<IPollPreview[]>(`${this.url}`, {
-            params,
-            headers: {
-                'Authorization': localStorage.getItem('token') as string || '',
-            }
-        });
+        return this.http.get<IPollPreview[]>(`${this.url}`, { params });
     }
 }
