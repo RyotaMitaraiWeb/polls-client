@@ -20,7 +20,11 @@ export class RedirectInterceptor implements HttpInterceptor {
         (err: any) => {
             if (err instanceof HttpErrorResponse) {
                 if (err.status === 404) {
-                    this.router.navigate(['/page-not-found'])
+                    this.router.navigate(['/page-not-found']);
+                } else if (err.status === 401) {
+                    this.router.navigate(['/login']);
+                } else if (err.status === 403) {
+                    this.router.navigate(['/']);
                 }
 
                 return;
