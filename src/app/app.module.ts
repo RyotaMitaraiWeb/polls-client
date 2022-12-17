@@ -10,6 +10,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { userReducer } from './store/user/user.reducers';
 import { FeaturesModule } from './features/features.module';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
+import { RedirectInterceptor } from './shared/interceptors/redirect.interceptor';
 
 @NgModule({
     declarations: [
@@ -32,6 +33,9 @@ import { TokenInterceptor } from './shared/interceptors/token.interceptor';
     providers: [HttpClientModule,
         {
             provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true,
+        },
+        {
+            provide: HTTP_INTERCEPTORS, useClass: RedirectInterceptor, multi: true,
         }
     ],
     bootstrap: [AppComponent],

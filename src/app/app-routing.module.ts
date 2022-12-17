@@ -7,6 +7,7 @@ import { AllComponent } from './core/all/all.component';
 import { CreatePollComponent } from './core/create-poll/create-poll.component';
 import { EditPollComponent } from './core/edit-poll/edit-poll.component';
 import { HomeComponent } from './core/home/home.component';
+import { NotFoundComponent } from './core/not-found/not-found.component';
 import { PollPageComponent } from './core/poll-page/poll-page.component';
 import { ProfileComponent } from './core/profile/profile.component';
 import { SearchResultsComponent } from './core/search-results/search-results.component';
@@ -43,6 +44,9 @@ const routes: Routes = [
                 path: ':id/edit', component: EditPollComponent, canActivate: [AuthGuard, AuthorGuard], pathMatch: 'full', resolve: { data: PollResolver }
             }
         ]
+    },
+    {
+        path: '**', component: NotFoundComponent
     }
 ];
 
