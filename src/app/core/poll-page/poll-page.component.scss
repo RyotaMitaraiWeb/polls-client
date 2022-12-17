@@ -4,6 +4,13 @@
     flex-direction: column;
     width: 100%;
 
+    .guest-message {
+        text-align: center;
+        color: gray;
+        font-style: italic;
+        font-weight: bold;
+    }
+
     form {
         width: 80%;
         margin-left: auto;

@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { PollService } from '../poll/poll.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SnackbarService } from 'src/app/features/snackbar/snackbar.service';
-import { Subscription } from 'rxjs';
-import { IPoll, IRequestError } from 'src/app/interfaces';
+import { map, Observable, Subscription } from 'rxjs';
+import { IPoll, IRequestError, IStore } from 'src/app/interfaces';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
-import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
 
 @Component({
     selector: 'app-poll-page',
@@ -21,15 +22,29 @@ export class PollPageComponent implements OnInit, OnDestroy {
         private readonly route: ActivatedRoute,
         private readonly snackbar: SnackbarService,
         private readonly fb: FormBuilder,
+        private readonly store: Store<IStore>,
     ) {
         this.pollId = Number(route.snapshot.paramMap.get('id'));
+        this.form = this.fb.group({
+            choice: ['', [Validators.required]]
+        });
+
+        this.userSubscription = store.select('user').subscribe(user => {
+            this.id = user.id;
+            if (this.id === 0) {
+                this.form.disable();
+            }
+        });
     }
+
+    userSubscription = new Subscription();
+    id: number = 0;
 
     poll!: IPoll;
     pollId!: number;
-    form = this.fb.group({
-        choice: ['', [Validators.required]]
-    })
+    form!: FormGroup<{
+        choice: FormControl<string | null>
+    }>;
 
     ngOnInit(): void {
         this.poll = this.route.snapshot.data['data'];
@@ -51,6 +66,7 @@ export class PollPageComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.voteStatus.unsubscribe();
         this.pollStatus.unsubscribe();
+        this.userSubscription.unsubscribe();
     }
 
     voteStatus = new Subscription();

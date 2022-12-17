@@ -1,7 +1,8 @@
 <section id="poll">
     <form action="POST" [formGroup]="form" (ngSubmit)="OnSubmit()">
         <h1>{{poll.title}}</h1>
-        <p class="dates"><b>Created at:</b> {{poll.creationDate | date: 'short'}}. <span *ngIf="poll.updateDate"><b>Last updated:</b> {{poll.updateDate | date: 'short'}}</span></p>
+        <p class="dates"><b>Created at:</b> {{poll.creationDate | date: 'short'}}. <span *ngIf="poll.updateDate"><b>Last
+                    updated:</b> {{poll.updateDate | date: 'short'}}</span></p>
         <div class="actions" *ngIf="poll.isAuthor">
             <app-edit-button [pollId]="poll.id"></app-edit-button>
             <app-delete-button [pollId]="poll.id"></app-delete-button>
@@ -18,13 +19,15 @@
         <h2>Total votes: {{totalCount}}</h2>
         <mat-radio-group formControlName="choice" required="required">
             <div class="choice" *ngFor="let vote of voteCounts">
-                <app-choice [content]="vote.content" [choiceId]="vote.id" [voteCount]="vote.count"
-                    [total]="totalCount" [userVote]="poll.voteId"></app-choice>
+                <app-choice [content]="vote.content" [choiceId]="vote.id" [voteCount]="vote.count" [total]="totalCount"
+                    [userVote]="poll.voteId"></app-choice>
             </div>
         </mat-radio-group>
-        <button mat-fab extended type="submit" color="primary" *ngIf="!poll?.hasVoted" [disabled]="form.invalid">
+        <button mat-fab extended type="submit" color="primary" *ngIf="!poll?.hasVoted && id !== 0"
+            [disabled]="form.invalid && id !== 0">
             <mat-icon>how_to_vote</mat-icon>
             Submit your vote
         </button>
+        <p class="guest-message" *ngIf="id === 0">You must be logged in to vote and view results!</p>
     </form>
 </section>
