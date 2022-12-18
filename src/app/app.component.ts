@@ -33,10 +33,6 @@ export class AppComponent implements OnInit {
         });
     }
 
-    changeTheme() {
-        this.theme = 'purple';
-    }
-
     closeMenu() {
         this.store.dispatch(close());
     }
