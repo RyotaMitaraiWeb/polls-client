@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IRequestError, IUserAuth, IUserResponse } from '../../interfaces';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -11,7 +12,7 @@ export class AuthService {
     url: string;
 
     constructor(private readonly httpClient: HttpClient) {
-        this.url = 'http://localhost:3000/user';
+        this.url = environment.apiUrl + '/user';
     }
 
     login(user: IUserAuth) {

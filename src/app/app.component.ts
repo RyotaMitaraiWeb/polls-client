@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
         });
     }
 
-    ngOnInit(): void {
+    ngOnInit(): void {        
         this.authService.isLoggedIn().subscribe({
             next: (res) => {
                 this.store.dispatch(setUser(res));

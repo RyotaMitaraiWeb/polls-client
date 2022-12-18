@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IPoll, IPollPreview, IPollSubmission, IPollSuccessfulAction } from 'src/app/interfaces';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -9,7 +10,7 @@ export class PollService {
 
     constructor(private readonly http: HttpClient) { }
 
-    url: string = 'http://localhost:3000/poll';
+    url: string = environment.apiUrl + '/poll';
 
     getPoll(id: number) {
         return this.http.get<IPoll>(this.url + '/' + id);
