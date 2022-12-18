@@ -11,6 +11,7 @@ import { userReducer } from './store/user/user.reducers';
 import { FeaturesModule } from './features/features.module';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 import { RedirectInterceptor } from './shared/interceptors/redirect.interceptor';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -31,6 +32,8 @@ import { RedirectInterceptor } from './shared/interceptors/redirect.interceptor'
         HttpClientModule,
     ],
     providers: [HttpClientModule,
+        {provide: LocationStrategy, useClass: HashLocationStrategy},
+
         {
             provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true,
         },
